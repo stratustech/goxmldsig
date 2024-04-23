@@ -418,7 +418,7 @@ func (ctx *ValidationContext) findSignature(root *etree.Element) (*types.Signatu
 }
 
 func (ctx *ValidationContext) verifyCertificate(sig *types.Signature) (*x509.Certificate, error) {
-	now := ctx.Clock.Now()
+	// now := ctx.Clock.Now()
 
 	roots, err := ctx.CertificateStore.Certificates()
 	if err != nil {
@@ -457,9 +457,9 @@ func (ctx *ValidationContext) verifyCertificate(sig *types.Signature) (*x509.Cer
 		return nil, errors.New("Could not verify certificate against trusted certs")
 	}
 
-	if now.Before(cert.NotBefore) || now.After(cert.NotAfter) {
-		return nil, errors.New("Cert is not valid at this time")
-	}
+	// if now.Before(cert.NotBefore) || now.After(cert.NotAfter) {
+	// 	return nil, errors.New("Cert is not valid at this time")
+	// }
 
 	return cert, nil
 }
